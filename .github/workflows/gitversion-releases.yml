@@ -2,7 +2,7 @@ name: Build Test Releases
 
 on:
   push:
-    branches: [ versions ]
+    branches: [ main ]
 
 jobs:
   version:
