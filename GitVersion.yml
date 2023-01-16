@@ -25,7 +25,7 @@ branches:
   main:
     regex: ^master$|^main$
     mode: ContinuousDelivery
-    tag: release
+    tag: main
     increment: Major
     prevent-increment-of-merged-branch-version: true
     track-merge-target: false
@@ -34,7 +34,19 @@ branches:
     is-release-branch: false
     is-mainline: true
     pre-release-weight: 55000
-  hotfix:
+  release:
+    regex: ^production$
+    mode: ContinuousDelivery
+    tag: release
+    increment: Minor
+    prevent-increment-of-merged-branch-version: false
+    track-merge-target: false
+    source-branches: []
+    tracks-release-branches: false
+    is-release-branch: true
+    is-mainline: false
+    pre-release-weight: 0
+  development:
     regex: ^versions$|^test$
     mode: ContinuousDelivery
     tag: alpha
