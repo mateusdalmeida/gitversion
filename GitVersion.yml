@@ -2,7 +2,7 @@ next-version: 1.0
 assembly-versioning-scheme: MajorMinorPatch
 assembly-file-versioning-scheme: MajorMinorPatch
 assembly-informational-format: '{InformationalVersion}'
-mode: mainline
+mode: ContinuousDelivery
 increment: Patch
 continuous-delivery-fallback-tag: ci
 tag-prefix: '[vV]'
