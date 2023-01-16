@@ -1,0 +1,66 @@
+name: Build Test Releases
+
+on:
+  push:
+    branches: [ versions ]
+
+jobs:
+  version:
+    name: Create version number
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Install GitVersion
+      uses: gittools/actions/gitversion/setup@v0.9.7
+      with:
+          versionSpec: '5.x'
+    - name: Use GitVersion
+      id: gitversion
+      uses: gittools/actions/gitversion/execute@v0.9.15
+      with: 
+        useConfigFile: true 
+
+    - name: Create version.txt with nuGetVersion
+      run: echo ${{ steps.gitversion.outputs.nuGetVersion  }} > version.txt
+    - name: Upload version.txt
+      uses: actions/upload-artifact@v2
+      with:
+        name: gitversion
+        path: version.txt
+  release:
+    name: Create a github release
+    needs: [ version ]
+    runs-on: ubuntu-latest
+    steps:
+    # - uses: actions/checkout@v3
+    # - uses: actions/setup-java@v3
+    #   with:
+    #     distribution: 'zulu'
+    #     java-version: '12.x'
+    #     cache: 'gradle'
+    # - uses: subosito/flutter-action@v2
+    #   with:
+    #     flutter-version: '3.3.8'
+    #     cache: true
+    - name: Get version.txt
+      uses: actions/download-artifact@v2
+      with:
+        name: gitversion
+    - name: Create new file without newline char from version.txt
+      run: tr -d '\n' < version.txt > version1.txt
+    - name: Read version
+      id: version
+      uses: juliangruber/read-file-action@v1
+      with:
+        path: version1.txt
+   
+    - name: Create a Release in GitHub
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: version1.txt
+        token: ${{ secrets.GH_TOKEN }}
+        tag: ${{ steps.version.outputs.content }}
+        commit: ${{ github.sha }}
+        prerelease: true
