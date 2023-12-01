@@ -46,7 +46,7 @@ branches:
     pre-release-weight: 0
   development:
     regex: ^test$
-    mode: ContinuousDelivery
+    mode: mainline
     tag: test
     increment: Patch
     prevent-increment-of-merged-branch-version: false
