@@ -21,8 +21,6 @@ jobs:
     - name: Use GitVersion
       id: gitversion
       uses: gittools/actions/gitversion/execute@v0.10.2
-      # with: 
-      #   useConfigFile: true 
 
     - name: Create version.txt with nuGetVersion
       run: echo ${{ steps.gitversion.outputs.nuGetVersion  }} > version.txt
