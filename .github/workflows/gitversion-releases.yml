@@ -9,26 +9,30 @@ jobs:
     name: Create version number
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         fetch-depth: 0
+        
     - name: Install GitVersion
-      uses: gittools/actions/gitversion/setup@v0.9.7
+      uses: gittools/actions/gitversion/setup@v0.10.2
       with:
           versionSpec: '5.x'
+
     - name: Use GitVersion
       id: gitversion
-      uses: gittools/actions/gitversion/execute@v0.9.15
+      uses: gittools/actions/gitversion/execute@v0.10.2
       with: 
         useConfigFile: true 
 
     - name: Create version.txt with nuGetVersion
       run: echo ${{ steps.gitversion.outputs.nuGetVersion  }} > version.txt
+
     - name: Upload version.txt
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: gitversion
         path: version.txt
+
     - name: Display GitVersion outputs
       run: |
         echo "NuGet: ${{ steps.gitversion.outputs.NuGetVersion }}"
