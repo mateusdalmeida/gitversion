@@ -47,9 +47,9 @@ branches:
     is-mainline: false
     pre-release-weight: 0
   development:
-    regex: ^versions$|^test$
+    regex: ^test$
     mode: ContinuousDelivery
-    tag: alpha
+    tag: test
     increment: Patch
     prevent-increment-of-merged-branch-version: false
     track-merge-target: false
