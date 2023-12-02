@@ -8,5 +8,5 @@ branches:
   test:
     regex: ^test$
     increment: Patch
-    source-branches: [ 'test', 'dev' ]
+    source-branches: [ 'test' ]
 
