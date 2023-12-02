@@ -40,7 +40,6 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         artifacts: "release.tar.gz,foo/*.txt"
-        token: ${{ secrets.GH_TOKEN }}
         tag: ${{ steps.version.outputs.content }}
         commit: ${{ github.sha }}
         prerelease: true
