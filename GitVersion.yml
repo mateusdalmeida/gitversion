@@ -1,5 +1,5 @@
 next-version: 1.0.19
-mode: ContinuousDeployment
+mode: Mainline
 branches:
   test:
     regex: test$
