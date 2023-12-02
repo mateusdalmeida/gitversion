@@ -1,1 +1,9 @@
 next-version: 1.0.19
+mode: ContinuousDeployment
+branches:
+  master:
+    tag: beta
+  feature:
+    increment: Minor
+  test:
+    increment: Patch
