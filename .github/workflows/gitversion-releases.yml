@@ -35,9 +35,14 @@ jobs:
       run: |
         echo "NuGet: ${{ steps.gitversion.outputs.NuGetVersion }}"
 
+    - name: Display GitVersion outputs
+      run: |
+        echo "${{ steps.gitversion.outputs }}"
+
  
     - name: Create a Release in GitHub
       uses: ncipollo/release-action@v1
       with:
         artifacts: "release.tar.gz,foo/*.txt"
+        tag: ${{ steps.version.outputs.NuGetVersion }}
         prerelease: true
