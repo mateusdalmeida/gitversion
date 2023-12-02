@@ -2,9 +2,8 @@ next-version: 1.0.19
 mode: ContinuousDeployment
 branches:
   test:
-    regex: ^test$
+    regex: test$
     increment: Minor
     source-branches: [ 'test' ]
 
 
-    
