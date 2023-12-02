@@ -1,12 +1,8 @@
 next-version: 1.0.19
 mode: ContinuousDeployment
 branches:
-  master:
-    tag: beta
-  feature:
-    increment: Minor
   test:
     regex: ^test$
-    increment: Patch
+    increment: Minor
     source-branches: [ 'test' ]
 
