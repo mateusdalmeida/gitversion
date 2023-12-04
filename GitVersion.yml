@@ -1,9 +1,17 @@
 next-version: 1.0.19
 mode: Mainline
 branches:
+  production:
+    regex: production$
+    increment: Minor
+    source-branches: [ 'production' ]
+  staging:
+    regex: staging$
+    increment: Patch
+    source-branches: [ 'staging' ]
   test:
     regex: test$
-    increment: Minor
+    increment: Patch
     source-branches: [ 'test' ]
 
 
