@@ -13,7 +13,4 @@ branches:
     regex: test$
     increment: Patch
     source-branches: [ 'test' ]
-
-
-
-
+    is-release-branch: true
